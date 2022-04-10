@@ -20,6 +20,7 @@ jobs:
         
   check_program_compilation:
     runs-on: ubuntu-latest
+    needs: check_repository_cleanliness
     container:
       image: epitechcontent/epitest-docker:latest
     steps:
@@ -48,6 +49,7 @@ jobs:
         
   push_to_mirror:
     runs-on: ubuntu-latest
+    needs: run_tests
     steps:
       - uses: actions/checkout@v3
         with:
